@@ -8,6 +8,7 @@ import android.support.v4.view.ViewCompat;
 import android.support.v4.view.WindowInsetsCompat;
 import android.support.v4.widget.NestedScrollView;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -17,6 +18,8 @@ import android.view.View;
 
 public class Test2Behavior extends CoordinatorLayout.Behavior{
 
+    public static final String TAG = "Test2Behavior";
+
     public Test2Behavior() {
     }
 
@@ -24,14 +27,23 @@ public class Test2Behavior extends CoordinatorLayout.Behavior{
         super(context, attrs);
     }
 
+    /**
+     * 所有的事件都会传到Behavior中
+     * @param parent
+     * @param child
+     * @param ev
+     * @return
+     */
     @Override
     public boolean onInterceptTouchEvent(CoordinatorLayout parent, View child, MotionEvent ev) {
-        return super.onInterceptTouchEvent(parent, child, ev);
+        Log.d(TAG, "onInterceptTouchEvent");
+        return false;
     }
 
     @Override
     public boolean onTouchEvent(CoordinatorLayout parent, View child, MotionEvent ev) {
-        return super.onTouchEvent(parent, child, ev);
+        Log.d(TAG, "onTouchEvent");
+        return false;
     }
 
     /**
@@ -78,6 +90,7 @@ public class Test2Behavior extends CoordinatorLayout.Behavior{
 
     @Override
     public boolean onStartNestedScroll(CoordinatorLayout coordinatorLayout, View child, View directTargetChild, View target, int nestedScrollAxes) {
+        Log.d(TAG, child.toString());
         return (nestedScrollAxes & ViewCompat.SCROLL_AXIS_VERTICAL) != 0;
     }
 
@@ -88,27 +101,41 @@ public class Test2Behavior extends CoordinatorLayout.Behavior{
 
     @Override
     public void onStopNestedScroll(CoordinatorLayout coordinatorLayout, View child, View target) {
+        Log.d(TAG, "onStopNestedScroll");
         super.onStopNestedScroll(coordinatorLayout, child, target);
     }
 
     @Override
     public void onNestedScroll(CoordinatorLayout coordinatorLayout, View child, View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
+        Log.d(TAG, "onNestedScroll");
         super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed);
     }
 
+    /**
+     * child 指的是当前具有behavior的view   target指的是滑动的view
+     * @param coordinatorLayout
+     * @param child
+     * @param target
+     * @param dx
+     * @param dy
+     * @param consumed
+     */
     @Override
     public void onNestedPreScroll(CoordinatorLayout coordinatorLayout, View child, View target, int dx, int dy, int[] consumed) {
+        Log.d(TAG, "onNestedPreScroll");
         int leftScrolled = target.getScrollY();
         child.setScrollY(leftScrolled);
     }
 
     @Override
     public boolean onNestedFling(CoordinatorLayout coordinatorLayout, View child, View target, float velocityX, float velocityY, boolean consumed) {
+        Log.d(TAG, "onNestedFling");
         return super.onNestedFling(coordinatorLayout, child, target, velocityX, velocityY, consumed);
     }
 
     @Override
     public boolean onNestedPreFling(CoordinatorLayout coordinatorLayout, View child, View target, float velocityX, float velocityY) {
+        Log.d(TAG, "onNestedPreFling");
         ((NestedScrollView) child).fling((int) velocityY);
         return false;
     }

@@ -7,10 +7,12 @@
     android:orientation="vertical">
 
     <android.support.v4.widget.NestedScrollView
+        android:id="@+id/ScrollView_left"
         android:layout_gravity="left"
         android:layout_width="wrap_content"
         android:background="@color/colorAccent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:tag="ScrollView_left">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -68,10 +70,12 @@
     </android.support.v4.widget.NestedScrollView>
 
     <android.support.v4.widget.NestedScrollView
+        android:id="@+id/ScrollView_right"
         android:layout_gravity="right"
         android:layout_width="wrap_content"
         android:background="@color/colorAccent"
         android:layout_height="match_parent"
+        android:tag="ScrollView_right"
         app:layout_behavior="com.mymoney.haiyangtan.coordinatorlayoutexample.Test2Behavior">
 
         <LinearLayout
