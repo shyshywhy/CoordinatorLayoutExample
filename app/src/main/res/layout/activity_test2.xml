@@ -6,8 +6,15 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
+    <Button
+        android:id="@+id/layout_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="onLayout"
+        android:layout_gravity="center"/>
+
     <android.support.v4.widget.NestedScrollView
-        android:id="@+id/ScrollView_left"
+        android:id="@+id/scrollview_left"
         android:layout_gravity="left"
         android:layout_width="wrap_content"
         android:background="@color/colorAccent"

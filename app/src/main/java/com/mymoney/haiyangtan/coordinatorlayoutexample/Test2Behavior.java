@@ -60,11 +60,12 @@ public class Test2Behavior extends CoordinatorLayout.Behavior{
 
     @Override
     public boolean layoutDependsOn(CoordinatorLayout parent, View child, View dependency) {
-        return super.layoutDependsOn(parent, child, dependency);
+        return child.getId() == R.id.scrollview_left;
     }
 
     @Override
     public boolean onDependentViewChanged(CoordinatorLayout parent, View child, View dependency) {
+        Log.d(TAG, "onDependentViewChanged");
         return super.onDependentViewChanged(parent, child, dependency);
     }
 
@@ -80,11 +81,13 @@ public class Test2Behavior extends CoordinatorLayout.Behavior{
 
     @Override
     public boolean onMeasureChild(CoordinatorLayout parent, View child, int parentWidthMeasureSpec, int widthUsed, int parentHeightMeasureSpec, int heightUsed) {
+        Log.d(TAG, "onMeasureChild");
         return super.onMeasureChild(parent, child, parentWidthMeasureSpec, widthUsed, parentHeightMeasureSpec, heightUsed);
     }
 
     @Override
     public boolean onLayoutChild(CoordinatorLayout parent, View child, int layoutDirection) {
+        Log.d(TAG, "onLayoutChild");
         return super.onLayoutChild(parent, child, layoutDirection);
     }
 
