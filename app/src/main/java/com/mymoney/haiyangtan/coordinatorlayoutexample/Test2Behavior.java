@@ -60,7 +60,8 @@ public class Test2Behavior extends CoordinatorLayout.Behavior{
 
     @Override
     public boolean layoutDependsOn(CoordinatorLayout parent, View child, View dependency) {
-        return child.getId() == R.id.scrollview_left;
+
+        return dependency.getId() == R.id.scrollview_left;
     }
 
     @Override

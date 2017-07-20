@@ -6,12 +6,24 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/layout_btn"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="onLayout"
-        android:layout_gravity="center"/>
+        android:orientation="vertical"
+        android:layout_gravity="center">
+        <Button
+            android:id="@+id/change_view_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="onViewChange"/>
+        <Button
+            android:id="@+id/layout_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="onLayout"
+            />
+
+    </LinearLayout>
 
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/scrollview_left"
